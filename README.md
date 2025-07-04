@@ -10,13 +10,13 @@ This repo is structured to reflect my growth through backend and frontend develo
 
 my-nxtwave-learnings/
 ├── nodejs-projects/
-│ ├── problem-1-get-books-api/
-│ ├── problem-2-add-book-api/
+│ ├── problem-1/
+│ ├── problem-2/
 │ └── ...
 │
 └── reactjs-projects/ <-- (Coming Soon!)
-├── problem-1-component-lifecycle/
-├── problem-2-todo-app-hooks/
+├── problem-1/
+├── problem-2/
 └── ...
 
 
@@ -35,6 +35,7 @@ Each folder contains:
 - Express.js
 - SQLite
 - REST API concepts
+- Authentication (JSON Web Token Authentication)
 
 ### Frontend (Coming Soon):
 - React.js
@@ -69,9 +70,9 @@ I plan to continuously enhance this repository with:
 
 If you’d like to collaborate, provide feedback, or just say hi:
 
-- 📧 Email: [Your Email]
-- 💼 LinkedIn: [Your LinkedIn Profile]
-- 💻 GitHub: [github.com/Prathappve](https://github.com/Prathappve)
+- 📧 Email: prathappve.workspace@gmail.com
+- 💼 LinkedIn: www.linkedin.com/in/venkata-eswar-prathap-palaparthi-1b93b8231
+- 💻 GitHub: https://github.com/Prathappve
 
 ---
 
