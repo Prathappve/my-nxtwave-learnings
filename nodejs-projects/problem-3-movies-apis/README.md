@@ -1,186 +1,127 @@
-# Movies
+# 🎬 Movies APIs – Node.js + Express + SQLite Project
 
-Given two files `app.js` and a database file `moviesData.db` consisting of two tables `movie` and `director`.
+A powerful backend API built with **Node.js**, **Express**, and **SQLite** to manage a movies database with support for **directors** and **movie listings**.
 
-Write APIs to perform CRUD operations on the tables `movie`, `director` containing the following columns,
+This project demonstrates RESTful API design, relational database handling, CRUD operations, and clean response formatting — all in a modular Node.js environment.
 
-**Movie Table**
+> 📌 Project developed as part of the NxtWave Full Stack Career Track
 
-| Columns     | Type    |
-| ----------- | ------- |
-| movie_id    | INTEGER |
-| director_id | INTEGER |
-| movie_name  | TEXT    |
-| lead_actor  | TEXT    |
+---
 
-**Director Table**
+## 🛠️ Tech Stack
 
-| Columns       | Type    |
-| ------------- | ------- |
-| director_id   | INTEGER |
-| director_name | TEXT    |
+| Tech        | Purpose                        |
+|-------------|---------------------------------|
+| Node.js     | JavaScript runtime              |
+| Express.js  | Web framework                   |
+| SQLite      | Lightweight embedded database   |
+| sqlite3     | Node driver for SQLite          |
+| REST APIs   | Resource-based architecture     |
 
-### API 1
+---
 
-#### Path: `/movies/`
+## 📁 Folder Structure
 
-#### Method: `GET`
+problem-3-movies-apis/
+├── app.js # Server logic and API routes
+├── moviesData.db # SQLite database
+├── moviesData.http # HTTP testing file (optional)
+├── package.json # Dependencies
+├── .gitignore # Git ignore config
+├── pnpm-lock.yaml # pnpm lock file
+└── README.md # Project documentation
 
-#### Description:
 
-Returns a list of all movie names in the movie table
+---
 
-#### Response
+## 🔗 API Endpoints
 
-```
+### GET `/movies/`
+Returns all movie names.
+
+```json
 [
-  {
-    movieName: "Captain America: The First Avenger",
-  },
-
-  ...
+  { "movieName": "Pushpa" },
+  { "movieName": "RRR" }
 ]
-```
 
-### API 2
+➕ POST /movies/
+Creates a new movie entry.
 
-#### Path: `/movies/`
-
-#### Method: `POST`
-
-#### Description:
-
-Creates a new movie in the movie table. `movie_id` is auto-incremented
-
-#### Request
-
-```
+Request Body:
 {
-  "directorId": 6,
-  "movieName": "Jurassic Park",
-  "leadActor": "Jeff Goldblum"
+  "directorId": 3,
+  "movieName": "Salaar",
+  "leadActor": "Prabhas"
 }
-```
+✅ Response: "Movie Successfully Added"
 
-#### Response
+🔍 GET /movies/:movieId/
+Fetches details of a movie by ID.
 
-```
-Movie Successfully Added
-```
-
-### API 3
-
-#### Path: `/movies/:movieId/`
-
-#### Method: `GET`
-
-#### Description:
-
-Returns a movie based on the movie ID
-
-#### Response
-
-```
 {
-  movieId: 12,
-  directorId: 3,
-  movieName: "The Lord of the Rings",
-  leadActor: "Elijah Wood",
+  "movieId": 5,
+  "directorId": 2,
+  "movieName": "Eega",
+  "leadActor": "Nani"
 }
-```
 
-### API 4
+✏️ PUT /movies/:movieId/
+Updates movie details by ID.
 
-#### Path: `/movies/:movieId/`
-
-#### Method: `PUT`
-
-#### Description:
-
-Updates the details of a movie in the movie table based on the movie ID
-
-#### Request
-
-```
+Request Body:
 {
-  "directorId": 24,
-  "movieName": "Thor",
-  "leadActor": "Christopher Hemsworth"
+  "directorId": 2,
+  "movieName": "Bahubali",
+  "leadActor": "Prabhas"
 }
-```
+✅ Response: "Movie Details Updated"
 
-#### Response
+❌ DELETE /movies/:movieId/
+Deletes a movie by ID.
+✅ Response: "Movie Removed"
 
-```
-Movie Details Updated
+🎬 GET /directors/
+Returns a list of all directors.
 
-```
-
-### API 5
-
-#### Path: `/movies/:movieId/`
-
-#### Method: `DELETE`
-
-#### Description:
-
-Deletes a movie from the movie table based on the movie ID
-
-#### Response
-
-```
-Movie Removed
-```
-
-### API 6
-
-#### Path: `/directors/`
-
-#### Method: `GET`
-
-#### Description:
-
-Returns a list of all directors in the director table
-
-#### Response
-
-```
 [
-  {
-    directorId: 1,
-    directorName: "Joe Johnston",
-  },
-
-  ...
+  { "directorId": 1, "directorName": "S. S. Rajamouli" },
+  { "directorId": 2, "directorName": "Sukumar" }
 ]
-```
 
-### API 7
+🎥 GET /directors/:directorId/movies/
+Fetches all movie names directed by a specific director.
 
-#### Path: `/directors/:directorId/movies/`
-
-#### Method: `GET`
-
-#### Description:
-
-Returns a list of all movie names directed by a specific director
-
-#### Response
-
-```
 [
-  {
-    movieName: "Captain Marvel",
-  },
-
-  ...
+  { "movieName": "Pushpa" },
+  { "movieName": "Arya" }
 ]
-```
 
-<br/>
+⚙️ How to Run This Locally
+1. Clone the repository
 
-Use `npm install` to install the packages.
+git clone https://github.com/Prathappve/my-nxtwave-learnings.git
+cd my-nxtwave-learnings/nodejs-projects/problem-3-movies-apis
 
-**Export the express instance using the default export syntax.**
+2. Install dependencies
 
-**Use Common JS module syntax.**
+npm install
+
+3. Start the server
+
+node app.js
+🟢 Server running at: http://localhost:3000
+
+📌 Developer Notes:
+1. Ensure moviesData.db exists in the same folder as app.js
+2. movie and director are two tables with relational data
+3. Input validation can be enhanced with Joi or express-validator
+4. Great base for expanding to token-based auth or frontend integration
+
+🙋‍♂️ About the Developer:
+Venkata Eswar Prathap Palaparthi
+Aspiring MERN Stack Developer | Backend Enthusiast
+🎓 Trained by NxtWave
+
+💬 Feedback or Suggestions?
+Feel free to star, fork, or raise issues. Collaboration welcome!
