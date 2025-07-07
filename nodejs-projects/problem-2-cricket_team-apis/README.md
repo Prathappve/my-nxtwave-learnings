@@ -1,135 +1,83 @@
-# Cricket Team
+# 🏏 Cricket Team Management API – Node.js + Express + SQLite
 
-Given two files `app.js` and a database file `cricketTeam.db` consisting a table `cricket_team`.
+A fully functional RESTful API to manage a cricket team's player records.  
+Built using **Node.js**, **Express.js**, and **SQLite**, this project demonstrates efficient **CRUD operations**, **database handling**, and **RESTful design principles**.
 
-Write APIs to perform operations on the table `cricket_team` containing the following columns,
+> ✅ Designed with real-world backend structure and best practices  
+> ✅ Ideal for small-scale apps, prototyping, or learning full-stack development
 
-| Columns       | Type    |
-| ------------- | ------- |
-| player_id     | INTEGER |
-| player_name   | TEXT    |
-| jersey_number | INTEGER |
-| role          | TEXT    |
+---
 
-### API 1
+## 🚀 Key Features
 
-#### Path: `/players/`
+- Get full team player list
+- Add new players with position and jersey number
+- Fetch, update, or delete any player by ID
+- Clean response formatting and error handling
 
-#### Method: `GET`
+---
 
-#### Description:
+## 🛠️ Tech Stack
 
-Returns a list of all players in the team
+| Technology | Purpose                    |
+|------------|-----------------------------|
+| Node.js    | JavaScript runtime           |
+| Express.js | API framework                |
+| SQLite     | Lightweight relational DB    |
+| sqlite3    | Node bindings for SQLite     |
+| REST API   | CRUD operations              |
 
-#### Response
+---
 
-```
+## 📁 Project Structure
+
+problem-2-cricket_team-apis/
+├── app.js # Main server logic and routes
+├── cricketTeam.db # SQLite database file
+├── package.json # Dependencies and scripts
+├── .gitignore # Git tracking rules
+└── README.md # You're reading it!
+
+
+---
+
+## 🔗 API Endpoints
+
+### `GET /players/`
+- **Returns**: List of all players
+```json
 [
   {
-    playerId: 1,
-    playerName: "Lakshman",
-    jerseyNumber: 5,
-    role: "All-rounder"
-  },
-
-  ...
+    "playerId": 1,
+    "playerName": "Virat Kohli",
+    "jerseyNumber": 18,
+    "role": "Batsman"
+  }
 ]
-```
 
-### API 2
+--> POST /players/
+### Request Body:
 
-#### Path: `/players/`
-
-#### Method: `POST`
-
-#### Description:
-
-Creates a new player in the team (database). `player_id` is auto-incremented
-
-#### Request
-
-```
 {
-  "playerName": "Vishal",
-  "jerseyNumber": 17,
-  "role": "Bowler"
+  "playerName": "Rohit Sharma",
+  "jerseyNumber": 45,
+  "role": "Batsman"
 }
-```
 
-#### Response
+Returns: "Player Added to Team"
 
-```
-Player Added to Team
-```
+--> GET /players/:playerId/
+Returns: Player details by ID
 
-### API 3
-
-#### Path: `/players/:playerId/`
-
-#### Method: `GET`
-
-#### Description:
-
-Returns a player based on a player ID
-
-#### Response
-
-```
+--> PUT /players/:playerId/
+Request Body:
 {
-  playerId: 1,
-  playerName: "Lakshman",
-  jerseyNumber: 5,
-  role: "All-rounder"
-}
-```
-
-### API 4
-
-#### Path: `/players/:playerId/`
-
-#### Method: `PUT`
-
-#### Description:
-
-Updates the details of a player in the team (database) based on the player ID
-
-#### Request
-
-```
-{
-  "playerName": "Maneesh",
-  "jerseyNumber": 54,
+  "playerName": "Hardik Pandya",
+  "jerseyNumber": 33,
   "role": "All-rounder"
 }
-```
 
-#### Response
+Returns: "Player Details Updated"
 
-```
-Player Details Updated
-
-```
-
-### API 5
-
-#### Path: `/players/:playerId/`
-
-#### Method: `DELETE`
-
-#### Description:
-
-Deletes a player from the team (database) based on the player ID
-
-#### Response
-
-```
-Player Removed
-```
-
-<br/>
-
-Use `npm install` to install the packages.
-
-**Export the express instance using the default export syntax.**
-
-**Use Common JS module syntax.**
+DELETE /players/:playerId/
+Returns: "Player Removed"
