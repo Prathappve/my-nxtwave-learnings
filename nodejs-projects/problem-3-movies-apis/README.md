@@ -113,10 +113,10 @@ node app.js
 🟢 Server running at: http://localhost:3000
 
 📌 Developer Notes:
-1. Ensure moviesData.db exists in the same folder as app.js
-2. movie and director are two tables with relational data
-3. Input validation can be enhanced with Joi or express-validator
-4. Great base for expanding to token-based auth or frontend integration
+1.Ensure moviesData.db exists in the same folder as app.js
+2.movie and director are two tables with relational data
+3.Input validation can be enhanced with Joi or express-validator
+4.Great base for expanding to token-based auth or frontend integration
 
 🙋‍♂️ About the Developer:
 Venkata Eswar Prathap Palaparthi
