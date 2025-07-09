@@ -1,221 +1,181 @@
-# Covid-19 India
+# COVID19 India Backend APIs
 
-Given two files `app.js` and a database file `covid19India.db` consisting of two tables `state` and `district`.
+A backend application built using **Node.js**, **Express.js**, and **SQLite** that simulates COVID19 statistics for Indian states and districts. It provides RESTful APIs for managing states and districts, including tracking cases, recoveries, active counts, and deaths.
 
-Write APIs to perform CRUD operations on the tables `state`, `district` containing the following columns,
+---
 
-**State Table**
+## 📂 Project Structure
 
-| Columns    | Type    |
-| ---------- | ------- |
-| state_id   | INTEGER |
-| state_name | TEXT    |
-| population | INTEGER |
+covid19India/
 
-**District Table**
+├── .gitignore
 
-| Columns       | Type    |
-| ------------- | ------- |
-| district_id   | INTEGER |
-| district_name | TEXT    |
-| state_id      | INTEGER |
-| cases         | INTEGER |
-| cured         | INTEGER |
-| active        | INTEGER |
-| deaths        | INTEGER |
+├── app.js
 
-### API 1
+├── covid19India.db
 
-#### Path: `/states/`
+├── covid19India.http
 
-#### Method: `GET`
+├── package.json
 
-#### Description:
+├── pnpm-lock.yaml
 
-Returns a list of all states in the state table
+└── README.md
 
-#### Response
+---
 
-```
-[
-  {
-    stateId: 1,
-    stateName: "Andaman and Nicobar Islands",
-    population: 380581
-  },
+## ⚙️ Tech Stack
 
-  ...
-]
-```
+- **Node.js**
+- **Express.js**
+- **SQLite**
+- **sqlite3** & **sqlite** (driver & promise wrapper)
+- **RESTful APIs**
 
-### API 2
+---
 
-#### Path: `/states/:stateId/`
+## 📦 Installation
 
-#### Method: `GET`
+1. Clone the respository
+   
+   git clone https://github.com/Prathappve/my-nxtwave-learnings.git
 
-#### Description:
+   cd my-nxtwave-learnings/nodejs-projects/problem-4-covid19India-apis
 
-Returns a state based on the state ID
+3. Install dependencies
 
-#### Response
+   npm install
 
-```
-{
-  stateId: 8,
-  stateName: "Delhi",
-  population: 16787941
-}
-```
+4. Start the server
 
-### API 3
+   node app.js
+   
+The server will run at: 🟢 Server running at: http://localhost:3000
 
-#### Path: `/districts/`
+🗃️ Database Tables
 
-#### Method: `POST`
+🟦 state Table
+| Column      | Type    |
+| ----------- | ------- |
+| state\_id   | INTEGER |
+| state\_name | TEXT    |
+| population  | INTEGER |
 
-#### Description:
+🟨 district Table
+| Column         | Type    |
+| -------------- | ------- |
+| district\_id   | INTEGER |
+| district\_name | TEXT    |
+| state\_id      | INTEGER |
+| cases          | INTEGER |
+| cured          | INTEGER |
+| active         | INTEGER |
+| deaths         | INTEGER |
 
-Create a district in the district table, `district_id` is auto-incremented
+🧪 API Endpoints
+📍 API 1: Get all states ==> GET /states/
 
-#### Request
+Response:
+        
+        [
+          {
+            "stateId": 1,
+            "stateName": "Andhra Pradesh",
+            "population": 49586757
+          },
+          ...
+        ]
 
-```
-{
-  "districtName": "Bagalkot",
-  "stateId": 3,
-  "cases": 2323,
-  "cured": 2000,
-  "active": 315,
-  "deaths": 8
-}
-```
+📍 API 2: Get state by ID ==> GET /states/:stateId/
 
-#### Response
+ Response:
+         
+         {
+          "stateId": 2,
+          "stateName": "Karnataka",
+          "population": 61095297
+        }
+📍 API 3: Add a new district ==> POST /districts/
 
-```
-District Successfully Added
-```
+Request Body:
+            
+            {
+              "districtName": "Bagalkot",
+              "stateId": 3,
+              "cases": 2323,
+              "cured": 2000,
+              "active": 315,
+              "deaths": 8
+            }
 
-### API 4
+Response: District Successfully Added
 
-#### Path: `/districts/:districtId/`
+📍 API 4: Get district by ID ==> GET /districts/:districtId/
 
-#### Method: `GET`
+Response:
+        
+        {
+          "districtId": 3,
+          "districtName": "Tumkur",
+          "stateId": 2,
+          "cases": 1987,
+          "cured": 1789,
+          "active": 180,
+          "deaths": 18
+        }
 
-#### Description:
+📍 API 5: Delete district by ID ==> DELETE /districts/:districtId/
 
-Returns a district based on the district ID
+Response: District Removed
 
-#### Response
+📍 API 6: Update district by ID ==> PUT /districts/:districtId/
 
-```
-{
-  districtId: 322,
-  districtName: "Haveri",
-  stateId: 36,
-  cases: 2816,
-  cured: 2424,
-  active: 172,
-  deaths: 220,
-}
-```
+Request Body:
+            
+            {
+              "districtName": "Updated Name",
+              "stateId": 1,
+              "cases": 3000,
+              "cured": 2500,
+              "active": 400,
+              "deaths": 100
+            }
 
-### API 5
+Response: District Details Updated
 
-#### Path: `/districts/:districtId/`
+📍 API 7: Get state statistics ==> GET /states/:stateId/stats/
 
-#### Method: `DELETE`
+Response:
+        
+        {
+          "totalCases": 724355,
+          "totalCured": 615324,
+          "totalActive": 99254,
+          "totalDeaths": 9777
+        }
 
-#### Description:
+📍 API 8: Get state name for a given district ==> GET /districts/:districtId/details/
 
-Deletes a district from the district table based on the district ID
+Response:
+        
+        {
+          "stateName": "Kerala"
+        }
 
-#### Response
+💡 Developer Notes:
 
-```
-District Removed
+1.All APIs follow clean REST conventions.
 
-```
+2.Uses parameterized queries (where applicable) to prevent SQL injection.
 
-### API 6
+3.Project is great for practicing API development, database integration, and Express.js patterns.
 
-#### Path: `/districts/:districtId/`
+🧑‍💻 Author
 
-#### Method: `PUT`
+Venkata Eswar Prathap Palaparthi
 
-#### Description:
+Aspiring Full-Stack Developer | Passionate about clean code and scalable apps.
 
-Updates the details of a specific district based on the district ID
+💬 Feedback or Suggestions?
 
-#### Request
-
-```
-{
-  "districtName": "Nadia",
-  "stateId": 3,
-  "cases": 9628,
-  "cured": 6524,
-  "active": 3000,
-  "deaths": 104
-}
-```
-
-#### Response
-
-```
-
-District Details Updated
-
-```
-
-### API 7
-
-#### Path: `/states/:stateId/stats/`
-
-#### Method: `GET`
-
-#### Description:
-
-Returns the statistics of total cases, cured, active, deaths of a specific state based on state ID
-
-#### Response
-
-```
-{
-  totalCases: 724355,
-  totalCured: 615324,
-  totalActive: 99254,
-  totalDeaths: 9777
-}
-
-
-```
-
-### API 8
-
-#### Path: `/districts/:districtId/details/`
-
-#### Method: `GET`
-
-#### Description:
-
-Returns an object containing the state name of a district based on the district ID
-
-#### Response
-
-```
-
-{
-  stateName: "Maharashtra"
-}
-
-```
-
-<br/>
-
-Use `npm install` to install the packages.
-
-**Export the express instance using the default export syntax.**
-
-**Use Common JS module syntax.**
+Feel free to star, fork, or raise issues. Collaboration welcome!
