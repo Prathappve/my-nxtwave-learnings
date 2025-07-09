@@ -23,12 +23,19 @@ This project demonstrates RESTful API design, relational database handling, CRUD
 ## 📁 Folder Structure
 
 problem-3-movies-apis/
+
 ├── app.js # Server logic and API routes
+
 ├── moviesData.db # SQLite database
+
 ├── moviesData.http # HTTP testing file (optional)
+
 ├── package.json # Dependencies
+
 ├── .gitignore # Git ignore config
+
 ├── pnpm-lock.yaml # pnpm lock file
+
 └── README.md # Project documentation
 
 
@@ -36,92 +43,110 @@ problem-3-movies-apis/
 
 ## 🔗 API Endpoints
 
-### GET `/movies/`
-Returns all movie names.
+API-1: Returns all movie names ==> GET `/movies/`
 
-```json
-[
-  { "movieName": "Pushpa" },
-  { "movieName": "RRR" }
-]
+Response:
 
-➕ POST /movies/
-Creates a new movie entry.
+        [
+          { "movieName": "Pushpa" },
+          { "movieName": "RRR" }
+        ]
 
-Request Body:
-{
-  "directorId": 3,
-  "movieName": "Salaar",
-  "leadActor": "Prabhas"
-}
-✅ Response: "Movie Successfully Added"
-
-🔍 GET /movies/:movieId/
-Fetches details of a movie by ID.
-
-{
-  "movieId": 5,
-  "directorId": 2,
-  "movieName": "Eega",
-  "leadActor": "Nani"
-}
-
-✏️ PUT /movies/:movieId/
-Updates movie details by ID.
+API-2: Creates a new movie entry ==> POST /movies/
 
 Request Body:
-{
-  "directorId": 2,
-  "movieName": "Bahubali",
-  "leadActor": "Prabhas"
-}
-✅ Response: "Movie Details Updated"
 
-❌ DELETE /movies/:movieId/
-Deletes a movie by ID.
-✅ Response: "Movie Removed"
+            {
+              "directorId": 3,
+              "movieName": "Salaar",
+              "leadActor": "Prabhas"
+            }
+Response: Movie Successfully Added
 
-🎬 GET /directors/
-Returns a list of all directors.
+API-3: Fetches details of a movie by ID ==> GET /movies/:movieId/
 
-[
-  { "directorId": 1, "directorName": "S. S. Rajamouli" },
-  { "directorId": 2, "directorName": "Sukumar" }
-]
+Response:
 
-🎥 GET /directors/:directorId/movies/
-Fetches all movie names directed by a specific director.
+        {
+          "movieId": 5,
+          "directorId": 2,
+          "movieName": "Eega",
+          "leadActor": "Nani"
+        }
 
-[
-  { "movieName": "Pushpa" },
-  { "movieName": "Arya" }
-]
+API-4: Updates movie details by ID ==> PUT /movies/:movieId/
+
+Request Body:
+
+            {
+              "directorId": 2,
+              "movieName": "Bahubali",
+              "leadActor": "Prabhas"
+            }
+
+Response: Movie Details Updated
+
+API-5: Deletes a movie by ID ==> DELETE /movies/:movieId/
+
+Response: Movie Removed
+
+API-6: Returns a list of all directors ==> GET /directors/
+
+Response:
+
+        [
+          { "directorId": 1, "directorName": "S. S. Rajamouli" },
+          { "directorId": 2, "directorName": "Sukumar" }
+        ]
+
+API-7: Fetches all movie names directed by a specific director ==> GET /directors/:directorId/movies/
+
+Response:
+
+        [
+          { "movieName": "Pushpa" },
+          { "movieName": "Arya" }
+        ]
 
 ⚙️ How to Run This Locally
+
 1. Clone the repository
 
-git clone https://github.com/Prathappve/my-nxtwave-learnings.git
-cd my-nxtwave-learnings/nodejs-projects/problem-3-movies-apis
+      git clone https://github.com/Prathappve/my-nxtwave-learnings.git
+
+      cd my-nxtwave-learnings/nodejs-projects/problem-3-movies-apis
 
 2. Install dependencies
 
-npm install
+      npm install
 
 3. Start the server
 
-node app.js
-🟢 Server running at: http://localhost:3000
+      node app.js
 
+Server starts at: 🟢 Server running at: http://localhost:3000
+
+  
 📌 Developer Notes:
+
 1.Ensure moviesData.db exists in the same folder as app.js
+
 2.movie and director are two tables with relational data
+
 3.Input validation can be enhanced with Joi or express-validator
+
 4.Great base for expanding to token-based auth or frontend integration
 
+
 🙋‍♂️ About the Developer:
+
 Venkata Eswar Prathap Palaparthi
+
 Aspiring MERN Stack Developer | Backend Enthusiast
+
 🎓 Trained by NxtWave
 
+
 💬 Feedback or Suggestions?
+
 Feel free to star, fork, or raise issues. Collaboration welcome!
