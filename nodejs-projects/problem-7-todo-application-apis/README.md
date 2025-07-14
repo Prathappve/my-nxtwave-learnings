@@ -31,7 +31,7 @@ project-root/
 
 1. Clone the repository:
    
-   git clone https://github.com/Prathappve/my-nxtwave-learnings/nodejs-projects/todo-application-apis.git
+   git clone https://github.com/Prathappve/my-nxtwave-learnings/nodejs-projects/problem-7-todo-application-apis.git
    
    cd todo-application-apis
    
