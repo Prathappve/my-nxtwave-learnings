@@ -48,9 +48,9 @@ project-root/
 
 1. Clone the repository:
    
-   git clone https://github.com/Prathappve/my-nxtwave-learnings/nodejs-projects/problem-6-queryparams-restful-apis.git
+   git clone https://github.com/Prathappve/my-nxtwave-learnings.git
 
-   cd problem-6-queryparams-restful-apis
+   cd my-nxtwave-learnings/nodejs-projects/problem-6-queryparams-restful-apis
 
 2. Install dependencies:
 
