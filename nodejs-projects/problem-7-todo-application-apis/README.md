@@ -31,19 +31,19 @@ project-root/
 
 1. Clone the repository:
    
-   git clone https://github.com/Prathappve/my-nxtwave-learnings/nodejs-projects/problem-7-todo-application-apis.git
+   git clone https://github.com/Prathappve/my-nxtwave-learnings.git
    
-   cd todo-application-apis
+   cd my-nxtwave-learnings/nodejs-projects/problem-7-todo-application-apis/
    
-2. Install dependencies:
+3. Install dependencies:
 
    npm install
    
-3. Start the server:
+4. Start the server:
 
    node app.js
 
-4. 🟢 Server will run at: http://localhost:3000
+5. 🟢 Server will run at: http://localhost:3000
 
 📡 API Endpoints
 
