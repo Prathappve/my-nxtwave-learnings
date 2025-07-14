@@ -1,249 +1,74 @@
-# Todo Application
-
-Given an `app.js` file and an empty database file `todoApplication.db`.
-
-Create a table with the name `todo` with the following columns,
-
-**Todo Table**
-
-| Column   | Type    |
-| -------- | ------- |
-| id       | INTEGER |
-| todo     | TEXT    |
-| priority | TEXT    |
-| status   | TEXT    |
+# ✅ Todo Application APIs
 
-and write APIs to perform operations on the table `todo`,
+This is a simple RESTful API built with **Node.js**, **Express.js**, and **SQLite** that allows users to manage todo items. It supports full CRUD operations with filtering, searching, and conditional updates.
 
-<MultiLineNote>
-  
-  - Replace the spaces in URL with `%20`.
-  - Possible values for `priority` are `HIGH`, `MEDIUM`, and `LOW`.
-  - Possible values for `status` are `TO DO`, `IN PROGRESS`, and `DONE`.
-</MultiLineNote>
-
-### API 1
-
-#### Path: `/todos/`
-
-#### Method: `GET`
-
-- **Scenario 1**
-
-  - **Sample API**
-    ```
-    /todos/?status=TO%20DO
-    ```
-  - **Description**:
+## 🚀 Features
 
-    Returns a list of all todos whose status is 'TO DO'
+- Get todos with search and filter options (`status`, `priority`, `search_q`)
+- Get a todo by ID
+- Add a new todo
+- Update a specific field (`status`, `priority`, or `todo`) of a todo
+- Delete a todo by ID
 
-  - **Response**
+## 🛠️ Tech Stack
 
-    ```
-    [
-      {
-        id: 1,
-        todo: "Watch Movie",
-        priority: "LOW",
-        status: "TO DO"
-      },
-      ...
-    ]
-    ```
+- **Backend**: Node.js, Express.js
+- **Database**: SQLite (using `sqlite3` and `sqlite` packages)
 
-- **Scenario 2**
+## 📁 Project Structure
 
-  - **Sample API**
-    ```
-    /todos/?priority=HIGH
-    ```
-  - **Description**:
+project-root/
 
-    Returns a list of all todos whose priority is 'HIGH'
+├── app.js # Main server file with API logic
 
-  - **Response**
+├── todoApplication.db # SQLite database file
 
-    ```
-    [
-      {
-        id: 2,
-        todo: "Learn Node JS",
-        priority: "HIGH",
-        status: "IN PROGRESS"
-      },
-      ...
-    ]
-    ```
+├── package.json # Project configuration and dependencies
 
-- **Scenario 3**
+├── .gitignore # Files and folders to ignore in Git
 
-  - **Sample API**
-    ```
-    /todos/?priority=HIGH&status=IN%20PROGRESS
-    ```
-  - **Description**:
+├── README.md # Project documentation
 
-    Returns a list of all todos whose priority is 'HIGH' and status is 'IN PROGRESS'
+1. Clone the repository:
+   
+   git clone https://github.com/Prathappve/my-nxtwave-learnings/nodejs-projects/todo-application-apis.git
+   
+   cd todo-application-apis
+   
+2. Install dependencies:
 
-  - **Response**
+   npm install
+   
+3. Start the server:
 
-    ```
-    [
-      {
-        id: 2,
-        todo: "Learn Node JS",
-        priority: "HIGH",
-        status: "IN PROGRESS"
-      },
-      ...
-    ]
-    ```
+   node app.js
 
-- **Scenario 4**
+4. 🟢 Server will run at: http://localhost:3000
 
-  - **Sample API**
-    ```
-    /todos/?search_q=Play
-    ```
-  - **Description**:
+📡 API Endpoints
 
-    Returns a list of all todos whose todo contains 'Play' text
+| Method | Endpoint          | Description                     |
+| ------ | ----------------- | ------------------------------- |
+| GET    | `/todos/`         | Get todos with optional filters |
+| GET    | `/todos/:todoId/` | Get a specific todo by ID       |
+| POST   | `/todos/`         | Add a new todo                  |
+| PUT    | `/todos/:todoId/` | Update a field in a todo        |
+| DELETE | `/todos/:todoId/` | Delete a todo by ID             |
 
-  - **Response**
+Example Request:
 
-    ```
-    [
-      {
-        id: 4,
-        todo: "Play volleyball",
-        priority: "MEDIUM",
-        status: "DONE"
-      },
-      ...
-    ]
-    ```
+GET /todos/?status=IN%20PROGRESS&priority=HIGH&search_q=meeting
 
-### API 2
+📌 Notes
 
-#### Path: `/todos/:todoId/`
+1. Data validation is minimal. For production, consider adding Joi or middleware validation.
 
-#### Method: `GET`
+2. This app uses raw SQL queries with parameters to prevent SQL injection.
 
-#### Description:
+🙋‍♂️ About the Developer
 
-Returns a specific todo based on the todo ID
+Venkata Eswar Prathap Palaparthi - Aspiring MERN Stack Developer | Backend Enthusiast
 
-#### Response
+💬 Feedback or Suggestions?
 
-```
-{
-  id: 2,
-  todo: "Learn JavaScript",
-  priority: "HIGH",
-  status: "DONE"
-}
-```
-
-### API 3
-
-#### Path: `/todos/`
-
-#### Method: `POST`
-
-#### Description:
-
-Create a todo in the todo table,
-
-#### Request
-
-```
-{
-  "id": 10,
-  "todo": "Finalize event theme",
-  "priority": "LOW",
-  "status": "TO DO"
-}
-```
-
-#### Response
-
-```
-Todo Successfully Added
-```
-
-### API 4
-
-#### Path: `/todos/:todoId/`
-
-#### Method: `PUT`
-
-#### Description:
-
-Updates the details of a specific todo based on the todo ID
-
-- **Scenario 1**
-
-  - **Request**
-    ```
-    {
-      "status": "DONE"
-    }
-    ```
-  - **Response**
-
-    ```
-    Status Updated
-    ```
-
-- **Scenario 2**
-
-  - **Request**
-    ```
-    {
-      "priority": "HIGH"
-    }
-    ```
-  - **Response**
-
-    ```
-    Priority Updated
-    ```
-
-- **Scenario 3**
-
-  - **Request**
-    ```
-    {
-      "todo": "Some task"
-    }
-    ```
-  - **Response**
-
-    ```
-    Todo Updated
-    ```
-
-### API 5
-
-#### Path: `/todos/:todoId/`
-
-#### Method: `DELETE`
-
-#### Description:
-
-Deletes a todo from the todo table based on the todo ID
-
-#### Response
-
-```
-Todo Deleted
-```
-
-<br/>
-
-Use `npm install` to install the packages.
-
-**Export the express instance using the default export syntax.**
-
-**Use Common JS module syntax.**
+Feel free to star, fork, or raise issues. Collaboration welcome!
