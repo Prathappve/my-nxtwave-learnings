@@ -1,0 +1,19 @@
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "Prathap_Palaparthi",
+  "name": "Prathap",
+  "password": "Prathap@1234",
+  "gender": "male",
+  "location": "Chilakaluripet"
+}
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "Prathap_Palaparthi",
+  "password": "Prathap@1234"
+}
