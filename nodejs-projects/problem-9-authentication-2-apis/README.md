@@ -1,216 +1,98 @@
-# Authentication
+🔐 User Authentication API
 
-Given an `app.js` file and a database file `userData.db` consisting of a  table `user`.
+This project provides a basic user registration and login system with secure password hashing using bcrypt, built with Node.js, Express.js, and SQLite.
 
-Write APIs to perform operations on the table `user` containing the following columns,
+📁 Tech Stack
 
-**User Table**
+1. Node.js & Express – Backend server and routing
 
-| Column   | Type    |
-| -------- | ------- |
-| username | TEXT |
-| name     | TEXT    |
-| password | TEXT    |
-| gender   | TEXT    |
-|location|TEXT|
+2. SQLite – Lightweight relational database
 
-### API 1
+3. bcrypt – Secure password hashing
 
-#### Path: `/register`
+📦 API Endpoints
 
-#### Method: `POST`
-
-**Request**
-
-```
-{
-  "username": "adam_richard",
-  "name": "Adam Richard",
-  "password": "richard_567",
-  "gender": "male",
-  "location": "Detroit"
-}
-```
-
-- **Scenario 1**
-
-  - **Description**:
-
-    If the username already exists
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      User already exists
-      ```
-
-- **Scenario 2**
-
-  - **Description**:
-
-    If the registrant provides a password with less than 5 characters
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Password is too short
-      ```
-
-- **Scenario 3**
-
-  - **Description**:
-
-    Successful registration of the registrant
-
-  - **Response**
-      - **Status code**
-        ```
-        200
-        ```
-      - **Status text**
-       ```
-       User created successfully
-       ```
-
-### API 2
-
-#### Path: `/login`
-
-#### Method: `POST`
-
-**Request**
-```
-{
-  "username": "adam_richard",
-  "password": "richard_567"
-}
-```
-
-- **Scenario 1**
-
-  - **Description**:
-
-    If an unregistered user tries to login
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Invalid user
-      ```
-
-- **Scenario 2**
-
-  - **Description**:
-
-    If the user provides incorrect password
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Invalid password
-      ```
-
-- **Scenario 3**
-
-  - **Description**:
-
-    Successful login of the user
-
-  - **Response**
-    - **Status code**
-      ```
-      200
-      ```
-    - **Status text**
-      ```
-      Login success!
-      ```
-
-### API 3
-
-#### Path: `/change-password`
-
-#### Method: `PUT`
-
-**Request**
-
-```
-{
-  "username": "adam_richard",
-  "oldPassword": "richard_567",
-  "newPassword": "richard@123"
-}
-```
-
-- **Scenario 1**
-
-  - **Description**:
-
-    If the user provides incorrect current password
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Invalid current password
-      ```
-
-- **Scenario 2**
-
-  - **Description**:
-
-    If the user provides new password with less than 5 characters
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Password is too short
-      ```
-
-- **Scenario 3**
-
-  - **Description**:
-
-    Successful password update
-
-  - **Response**
-    - **Status code**
-      ```
-      200
-      ```
-    - **Status text**
-      ```
-      Password updated
-      ```
+1. 🚀 Register User:
+   
+    Method: POST
+    
+    Endpoint: /register
+    
+    Request Body:
+    
+                {
+                  "username": "john_doe",
+                  "name": "John Doe",
+                  "password": "secure123",
+                  "gender": "male",
+                  "location": "Hyderabad"
+                }
+    Register API Scenarios:
+    
+    1. ✅ Success: "User created successfully"
+    
+    2. ❌ Username exists: "User already exists"
+    
+    3. ❌ Password too short (<5): "Password is too short"
 
 
-<br/>
 
-Use `npm install` to install the packages.
+2. 🔑 Login User
+   
+    Method: POST
+    
+    Endpoint: /login
+    
+    Request Body:
+  
+                {
+                "username": "john_doe",
+                "password": "secure123"
+                }
+  
+    Scenarios:
+  
+    1. ✅ Success: "Login success!"
+    
+    2. ❌ User not found: "Invalid user"
+    
+    3. ❌ Wrong password: "Invalid password"
 
-**Export the express instance using the default export syntax.**
+🔐 Security Notes: 
 
-**Use Common JS module syntax.**
+1. Passwords are hashed with bcrypt before storing in the database.
+
+🛠️ To Run the Project
+
+1. Install dependencies:
+
+   npm install
+
+2. Ensure the database userData.db exists with a user table:
+
+   CREATE TABLE user (
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
+   username TEXT UNIQUE,
+   name TEXT,
+   password TEXT,
+   gender TEXT,
+   location TEXT
+   );
+
+3. Start the server:
+
+   node app.js
+
+4. Server runs on: http://localhost:3000
+
+🙋‍♂️ About the Developer
+
+Venkata Eswar Prathap Palaparthi
+
+Aspiring MERN Stack Developer | Backend Enthusiast
+
+🎓 Trained by NxtWave
+
+💬 Feedback or Suggestions?
+
+Feel free to star, fork, or raise issues. Collaboration welcome!
