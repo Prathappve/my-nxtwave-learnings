@@ -9,14 +9,33 @@ This repo is structured to reflect my growth through backend and frontend develo
 ## 🗂️ Project Structure
 
 my-nxtwave-learnings/
-├── nodejs-projects/
+
+├── nodejs-jwt-projects/
+
 │ ├── problem-1/
+
 │ ├── problem-2/
+
 │ └── ...
+
 │
+
+├── nodejs-projects/
+
+│ ├── problem-1/
+
+│ ├── problem-2/
+
+│ └── ...
+
+│
+
 └── reactjs-projects/ <-- (Coming Soon!)
+
 ├── problem-1/
+
 ├── problem-2/
+
 └── ...
 
 
