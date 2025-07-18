@@ -1,10 +1,64 @@
-# Covid-19 India Portal
+# 🦠 COVID-19 India Portal API
 
-Given two files `app.js` and a database file `covid19IndiaPortal.db` consisting of three tables `state`, `district` and `user`.
+This is a secure RESTful API built using **Node.js**, **Express**, and **SQLite** to manage COVID-19 data across Indian states and districts. It features **JWT-based user authentication**, role-protected endpoints, and full CRUD operations for districts and stats.
 
-Write APIs to perform operations on the tables `state`, `district` only after authentication of the user.
+---
 
-The columns of the tables are given below,
+## 🚀 Features
+
+- 🔐 Secure Login with JWT Authentication
+  
+- 📊 Fetch & Manage State and District Data
+  
+- ✅ Middleware Protection for Sensitive Routes
+  
+- 📈 Aggregated COVID-19 Statistics by State
+  
+- 🔁 Full CRUD Operations for Districts
+
+---
+
+## 🛠 Tech Stack
+
+- **Backend**: Node.js, Express.js
+- **Database**: SQLite
+- **Auth**: JWT (jsonwebtoken), bcrypt
+- **Driver**: `sqlite3`, `sqlite` package
+
+---
+
+## 📁 Project Structure
+
+covid19-india-portal/
+
+├── covid19IndiaPortal.db # SQLite DB file
+
+├── app.js # Main Express server
+
+├── package.json # Project dependencies
+
+└── README.md # Project overview
+
+
+---
+
+## 🔧 Installation
+
+1. **Clone the repository**  
+   
+   git clone https://github.com/Prathappve/my-nxtwave-learnings.git
+   
+   cd my-nxtwave-learnings/nodejs-jwt-projects/problem-3-covid19IndiaPortal-apis
+
+2. Install dependencies - npm install
+
+3. Start the server - nodemon app.js
+
+4. Server will run at: http://localhost:3000/
+
+🔐 Authentication
+
+This project uses JWT (JSON Web Token) to protect sensitive routes.
 
 **State Table**
 
@@ -26,8 +80,6 @@ The columns of the tables are given below,
 | active        | INTEGER |
 | deaths        | INTEGER |
 
-You can use your previous code if required.
-
 #### Sample Valid User Credentials
 
 ```
@@ -36,6 +88,8 @@ You can use your previous code if required.
   "password": "christy@123"
 }
 ```
+
+📌 API Endpoints
 
 ### API 1
 
@@ -290,8 +344,23 @@ Returns the statistics of total cases, cured, active, deaths of a specific state
 
 <br/>
 
-Use `npm install` to install the packages.
+🔒 Error Handling:
 
-**Export the express instance using the default export syntax.**
+1. Invalid Token → 401: Invalid JWT Token
 
-**Use Common JS module syntax.**
+2. Invalid User/Password → 400: Invalid user or Invalid password
+
+3. Missing Data → 400: No State/District Found
+
+🙋‍♂️ About the Developer
+
+Venkata Eswar Prathap Palaparthi
+
+Aspiring MERN Stack Developer | Backend Enthusiast
+
+🎓 Trained by NxtWave
+
+
+💬 Feedback or Suggestions?
+
+Feel free to star, fork, or raise issues. Collaboration welcome!
